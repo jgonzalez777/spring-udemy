@@ -9,5 +9,8 @@
 		
 	<span th:text="${usuario.nombre}"></span><!-- Se imprime el dato nombre del objeto usuario -->
 	<span th:text="${usuario.apellido}"></span><!-- Se imprime el dato nombre del objeto usuario -->
+	<br/>
+	<span th:if="${usuario.email}" th:text="${usuario.email}"></span><br/>
+	<span th:if="${usuario.email == null}">El usuario no tiene correo</span>
 </body>
 </html>

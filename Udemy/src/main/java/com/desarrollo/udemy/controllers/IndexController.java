@@ -1,5 +1,8 @@
 package com.desarrollo.udemy.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +25,17 @@ public class IndexController {
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Jorge");
 		usuario.setApellido("Gonzalez");//En la práctica este dato viene de la DB o de un servicio
-		model.addAttribute("usuario", usuario);//Se pasa al Model el objeto usuario
+		usuario.setEmail("jorge.cana9@gmail.com");
+		model.addAttribute("usuario", usuario);//Se pasa al Model el objeto usuario		
 		model.addAttribute("titulo", "Perfil del usuario: ".concat(usuario.getNombre()));//Se pasa al Model el string titulo
 		return "perfil"; //Se crea la vista perfil.html
+	}
+	
+	@RequestMapping("/listar")
+	public String listar(Model model) {
+		model.addAttribute("titulo", "Listado de usuarios");//Se pasa al Model el string titulo
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		model.addAttribute("usuarios", usuarios);//Se pasa al Model la lista usuarios		
+		return "listar"; //Se crea la vista perfil.html
 	}
 }
