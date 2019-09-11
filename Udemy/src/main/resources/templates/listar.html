@@ -6,7 +6,25 @@
 </head>
 <body>
 	<h1 th:text="${titulo}"></h1>
-	
-	<span th:if="${usuarios.size() == 0}">No ha usuarios en la lista!</span>
+
+	<span th:if="${usuarios.isEmpty()}">No ha usuarios en la
+		lista!</span>
+
+	<table th:if="${not usuarios.isEmpty()}"><!-- Se utiliza not para negar, al igual que (!) -->
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="usuario : ${usuarios}"><!-- Se hace el for each para recorrer la lista de usuarios -->
+				<td th:text="${usuario.nombre}"></td><!-- Se utiliza el text para mostrar cada atributo del objeto -->
+				<td th:text="${usuario.apellido}"></td><!-- Se utiliza el text para mostrar cada atributo del objeto -->
+				<td th:text="${usuario.email}"></td><!-- Se utiliza el text para mostrar cada atributo del objeto -->
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

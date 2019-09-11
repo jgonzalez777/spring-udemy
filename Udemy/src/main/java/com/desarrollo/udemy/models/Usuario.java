@@ -13,7 +13,20 @@ public class Usuario {
 
 	public String getNombre() {
 		return nombre;
+	}	
+
+	public Usuario() {
+		super();
 	}
+
+	public Usuario(String nombre, String apellido, String email) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+	}
+
+
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

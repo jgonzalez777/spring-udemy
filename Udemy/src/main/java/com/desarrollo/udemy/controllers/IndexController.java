@@ -1,6 +1,6 @@
 package com.desarrollo.udemy.controllers;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,17 @@ public class IndexController {
 	@RequestMapping("/listar")
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de usuarios");//Se pasa al Model el string titulo
+		/*
 		List<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios.add(new Usuario("Jorge", "Gonzalez", "jorge.cana9@gmail.com"));
+		usuarios.add(new Usuario("Pedro", "Piedra", "pedro.piedra@gmail.com"));
+		usuarios.add(new Usuario("Lucas", "Limon", "lucas.lobos@gmail.com"));*/
+		
+		List<Usuario> usuarios = Arrays.asList(new Usuario("Jorge", "Gonzalez", "jorge.cana9@gmail.com"),
+				new Usuario("Pedro", "Piedra", "pedro.piedra@gmail.com"),
+				new Usuario("Lucas", "Limon", "lucas.lobos@gmail.com"),
+				new Usuario("Mario", "Santos", "mario.santos@gmail.com"));
+		
 		model.addAttribute("usuarios", usuarios);//Se pasa al Model la lista usuarios		
 		return "listar"; //Se crea la vista perfil.html
 	}
