@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.desarrollo.udemy.models.Usuario;
@@ -38,14 +40,16 @@ public class IndexController {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios.add(new Usuario("Jorge", "Gonzalez", "jorge.cana9@gmail.com"));
 		usuarios.add(new Usuario("Pedro", "Piedra", "pedro.piedra@gmail.com"));
-		usuarios.add(new Usuario("Lucas", "Limon", "lucas.lobos@gmail.com"));*/
-		
+		usuarios.add(new Usuario("Lucas", "Limon", "lucas.lobos@gmail.com"));*/		
+		return "listar"; //Se crea la vista perfil.html
+	}
+	
+	@ModelAttribute("usuarios")//PAsar datos a la vista como catalogos (la lista de usuarios está disponible en cada uno de los métodos
+	public List<Usuario> poblar(){
 		List<Usuario> usuarios = Arrays.asList(new Usuario("Jorge", "Gonzalez", "jorge.cana9@gmail.com"),
 				new Usuario("Pedro", "Piedra", "pedro.piedra@gmail.com"),
 				new Usuario("Lucas", "Limon", "lucas.lobos@gmail.com"),
 				new Usuario("Mario", "Santos", "mario.santos@gmail.com"));
-		
-		model.addAttribute("usuarios", usuarios);//Se pasa al Model la lista usuarios		
-		return "listar"; //Se crea la vista perfil.html
+		return usuarios;
 	}
 }
